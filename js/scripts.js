@@ -1,35 +1,46 @@
-let pokemonList = [
-  {
-    name: "Ivysaur",
-    height: 1,
-    type: ["grass", "poison"],
-  },
-
-  {
-    name: "Ninetales",
-    height: 1.1,
-    type: ["fire"],
-  },
-
-  {
-    name: "Arcanine",
-    height: 1.9,
-    type: ["fire"],
-  },
-
-  {
-    name: "Charizard",
-    height: 1.7,
-    type: ["fire", "flying"],
-  },
-
-  {
-    name: "Snorlax",
-    height: 2.1,
-    type: ["normal"],
-  },
-];
-
+let pokemonRepository = (function () {
+  let data = {};
+  let pokemonList = [
+    {
+      name: "Ivysaur",
+      height: 1,
+      type: ["grass", "poison"],
+    },
+  
+    {
+      name: "Ninetales",
+      height: 1.1,
+      type: ["fire"],
+    },
+  
+    {
+      name: "Arcanine",
+      height: 1.9,
+      type: ["fire"],
+    },
+  
+    {
+      name: "Charizard",
+      height: 1.7,
+      type: ["fire", "flying"],
+    },
+  
+    {
+      name: "Snorlax",
+      height: 2.1,
+      type: ["normal"],
+    },
+  ];
+function add(pokemon) {
+  pokemonList.push(pokemon);
+}
+  
+function getAll() {
+  return pokemonList;
+}
+})();
+console.log(data);
+  
 //It wont print anything if I use console.log instead of document.write
 pokemonList.forEach(function (pokemonList) {
   document.write(pokemonList.name + "(height: " + pokemonList.height + ")");
