@@ -1,39 +1,51 @@
 let pokemonList = [
   {
-    name: "Ivysaur (height: 1)",
+    name: "Ivysaur",
     height: 1,
     type: ["grass", "poison"],
   },
 
   {
-    name: "Ninetales (height: 1.1)",
+    name: "Ninetales",
     height: 1.1,
     type: ["fire"],
   },
 
   {
-    name: "Arcanine (height: 1.9)",
+    name: "Arcanine",
     height: 1.9,
     type: ["fire"],
   },
 
   {
-    name: "Charizard (height: 1.7)",
+    name: "Charizard",
     height: 1.7,
     type: ["fire", "flying"],
   },
 
   {
-    name: "Snorlax (height: 2.1)",
+    name: "Snorlax",
     height: 2.1,
     type: ["normal"],
   },
 ];
-//There has to be a comma after the quotations above or it won't print
 
-for (let i = 0; i < pokemonList.length; i++) {
-  document.write(pokemonList[i].name);
-  if (pokemonList[i].height > 2) {
-    document.write(pokemonList[i].name + " - Wow, that's big!");
+//It wont print anything if I use console.log instead of document.write
+pokemonList.forEach(function (pokemonList) {
+  document.write(pokemonList.name + "(height: " + pokemonList.height + ")");
+  if (pokemonList.height > 2) {
+    document.write(" - Wow, that's big!");
   }
-}
+  document.write("<br>");
+});
+
+//This was a normal loop that was originally used instead of the one above
+/*for (let i = 0; i < pokemonList.length; i++) {
+  document.write(
+    pokemonList[i].name + "(height: " + pokemonList[i].height + ")"
+  );
+  if (pokemonList[i].height > 2) {
+    document.write(" - Wow, that's big!");
+  }
+  document.write("<br>");
+}*/
