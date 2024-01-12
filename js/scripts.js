@@ -1,5 +1,4 @@
 let pokemonRepository = (function () {
-  let data = {};
   let pokemonList = [
     {
       name: "Ivysaur",
@@ -31,26 +30,30 @@ let pokemonRepository = (function () {
       type: ["normal"],
     },
   ];
-  function add(pokemon) {
-    pokemonList.push(pokemon);
-  }
 
   function getAll() {
     return pokemonList;
   }
+
+  function add(pokemon) {
+    pokemonList.push(pokemon);
+  }
+
+  return {
+    getAll: getAll,
+    add: add,
+  };
 })();
-console.log(data);
+
 //It wont print anything if I use console.log instead of document.write
 
-function loadlist() {
-  pokemonList.results.forEach(function (pokemonList) {
-    document.write(pokemonList.name + "(height: " + pokemonList.height + ")");
-    if (pokemonList.height > 2) {
-      document.write(" - Wow, that's big!");
-    }
-    document.write("<br>");
-  });
-}
+pokemonRepository.getAll().forEach(function (pokemon) {
+  document.write(pokemon.name);
+  if (pokemon.height > 2) {
+    document.write(pokemon.name + " - Wow, that's big!");
+  }
+  document.write("<br>"); //prints the data on different lines instead of the same line
+});
 
 //This was a normal loop that was originally used instead of the one above
 /*for (let i = 0; i < pokemonList.length; i++) {
