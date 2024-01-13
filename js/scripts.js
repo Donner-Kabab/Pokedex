@@ -39,20 +39,39 @@ let pokemonRepository = (function () {
     pokemonList.push(pokemon);
   }
 
+  //button information
+  function addListItem(pokemon) {
+    let pokemonList = document.querySelector(".pokemon-list");
+    let listpokemon = document.createElement("li");
+    let button = document.createElement("button");
+    button.innerText = pokemon.name;
+    button.classList.add("button-class");
+    listpokemon.appendChild(button);
+    pokemonList.appendChild(listpokemon);
+    //adding an event listener
+    button.addEventListener('click', function (event) {
+      console.log(event);
+    })
+  }
+
+  showDetails(pokemon) {
+    console.log(pokemon),
+
+  }
+
   return {
     getAll: getAll,
     add: add,
+    addListItem: addListItem,
   };
 })();
-
 //It wont print anything if I use console.log instead of document.write
 
+//printing button
 pokemonRepository.getAll().forEach(function (pokemon) {
-  document.write(pokemon.name);
-  if (pokemon.height > 2) {
-    document.write(pokemon.name + " - Wow, that's big!");
-  }
-  document.write("<br>"); //prints the data on different lines instead of the same line
+  pokemonRepository.addListItem(pokemon);
+
+  document.write("<br>");
 });
 
 //This was a normal loop that was originally used instead of the one above
