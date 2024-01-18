@@ -1,35 +1,6 @@
 let pokemonRepository = (function () {
-  let pokemonList = [
-    {
-      name: "Ivysaur",
-      height: 1,
-      type: ["grass", "poison"],
-    },
-
-    {
-      name: "Ninetales",
-      height: 1.1,
-      type: ["fire"],
-    },
-
-    {
-      name: "Arcanine",
-      height: 1.9,
-      type: ["fire"],
-    },
-
-    {
-      name: "Charizard",
-      height: 1.7,
-      type: ["fire", "flying"],
-    },
-
-    {
-      name: "Snorlax",
-      height: 2.1,
-      type: ["normal"],
-    },
-  ];
+  let pokemonList = [];
+  let apiUrl = "https://pokeapi.co/api/v2/pokemon/?limit=950";
 
   function getAll() {
     return pokemonList;
@@ -49,29 +20,70 @@ let pokemonRepository = (function () {
     listpokemon.appendChild(button);
     pokemonList.appendChild(listpokemon);
     //adding an event listener
-    button.addEventListener('click', function (event) {
+    button.addEventListener("click", function (event) {
       console.log(event);
-    })
+      showDetails(pokemon);
+    });
   }
 
-  showDetails(pokemon) {
-    console.log(pokemon),
+  //promise to load the link
+  function loadList() {
+    return fetch(apiUrl)
+      .then(function (response) {
+        return response.json();
+      })
+      .then(function (json) {
+        json.results.forEach(function (item) {
+          let pokemon = {
+            name: item.name,
+            detailsUrl: item.url,
+          };
+          add(pokemon);
+        });
+      })
+      .catch(function (e) {
+        console.error(e);
+      });
+  }
 
+  function loadDetails(item) {
+    let url = item.detailsUrl;
+    return fetch(url)
+      .then(function (response) {
+        return response.json();
+      })
+      .then(function (details) {
+        //adding the details
+        item.imageUrl = details.sprites.front_default;
+        item.height = details.height;
+        item.types = details.types;
+      })
+      .catch(function (e) {
+        console.error(e);
+      });
+  }
+  function showDetails(pokemon) {
+    loadDetails(pokemon).then(function () {
+      console.log(pokemon);
+    });
   }
 
   return {
     getAll: getAll,
     add: add,
     addListItem: addListItem,
+    loadList: loadList,
+    loadDetails: loadDetails,
   };
 })();
-//It wont print anything if I use console.log instead of document.write
 
 //printing button
-pokemonRepository.getAll().forEach(function (pokemon) {
-  pokemonRepository.addListItem(pokemon);
+pokemonRepository.loadList().then(function () {
+  pokemonRepository.getAll().forEach(function (pokemon) {
+    pokemonRepository.addListItem(pokemon);
 
-  document.write("<br>");
+    //document.write("<br>");
+  });
 });
 
 //This was a normal loop that was originally used instead of the one above
