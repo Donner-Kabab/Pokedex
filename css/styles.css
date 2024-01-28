@@ -2,7 +2,12 @@ html,
 body {
   font-family: Arial, sans-serif;
 }
+
 #modal-container {
+  display: none;
+}
+
+#modal-container.is-visible {
   position: fixed;
   padding: 20px;
   box-sizing: border-box;
@@ -27,16 +32,6 @@ body {
   max-width: 700px;
 }
 
-#modal-container.is-visible {
-  position: fixed;
-  padding: 20px;
-  box-sizing: border-box;
-  overflow: auto;
-  text-align: center;
-  display: grid;
-  text-align: center;
-}
-
 .modal-close {
   float: right;
   -webkit-appearance: none;
@@ -53,3 +48,9 @@ body {
 .modal p {
   margin-bottom: 0;
 }
+
+ul {
+  list-style-type: none;
+  text-align: center;
+}
+
