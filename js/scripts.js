@@ -2,18 +2,6 @@ let pokemonRepository = (function () {
   let pokemonList = [];
   let apiUrl = "https://pokeapi.co/api/v2/pokemon/?limit=950";
 
-  function add(pokemon) {
-    if (
-      typeof pokemon === "object" &&
-      "name" in pokemon &&
-      "detailsUrl" in pokemon
-    ) {
-      pokemonList.push(pokemon);
-    } else {
-      console.log("Pokemon is not correct");
-    }
-  }
-
   function getAll() {
     return pokemonList;
   }
@@ -22,15 +10,23 @@ let pokemonRepository = (function () {
   function addListItem(pokemon) {
     let pokemonList = document.querySelector(".pokemon-list");
     let listpokemon = document.createElement("li");
+
     let button = document.createElement("button");
-    button.innerText = pokemon.name;
+    button.innerHTML = pokemon.name;
     button.classList.add("button-class");
     listpokemon.appendChild(button);
     pokemonList.appendChild(listpokemon);
+    button.setAttribute("data-target", "modal");
+    button.setAttribute("data-toggle", "modal");
+    button.classList.add("btn", "btn-lg", "btn-block");
+
     //adding an event listener
     button.addEventListener("click", function (event) {
       // showDetails(pokemon);
       showModal(pokemon);
+      let li = document.createElement("li");
+      li.classList.add("col-6", "col-md-4");
+      pokemonList.appendChild(li);
     });
   }
 
@@ -147,9 +143,6 @@ let pokemonRepository = (function () {
 //printing button
 pokemonRepository.loadList().then(function () {
   pokemonRepository.getAll().forEach(function (pokemon) {
-    console.log(pokemon);
     pokemonRepository.addListItem(pokemon);
-
-    //document.write("<br>");
   });
 });
