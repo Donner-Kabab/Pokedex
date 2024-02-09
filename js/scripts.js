@@ -6,6 +6,19 @@ let pokemonRepository = (function () {
     return pokemonList;
   }
 
+    function add(pokemon) {
+    if (
+      typeof pokemon === "object" &&
+      "name" in pokemon &&
+      "detailsUrl" in pokemon
+    ) {
+      pokemonList.push(pokemon);
+    } else {
+      console.log("Pokemon is not correct");
+    }
+  }
+
+
   //button information
   function addListItem(pokemon) {
     let pokemonList = document.querySelector(".pokemon-list");
