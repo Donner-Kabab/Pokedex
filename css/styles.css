@@ -1,26 +1,37 @@
-html,
 body {
   font-family: Arial, sans-serif;
 }
 
-#modal-container {
-  display: none;
+.container {
+  background-color: #446376;
+  border-radius: 10px;
 }
 
-.modal {
+.page-header {
+  border-bottom: 2px solid rgb(101, 148, 169);
+}
+
+.page-header img {
+  display: block;
+  margin: auto;
+  padding: 20px;
+}
+
+.name-btn {
+  background-color: rgb(187, 239, 187);
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+  font-size: 16;
+  margin: 10px 15px;
+  padding: 15px;
+}
+
+.modal-content {
   margin: auto;
   display: inline-block;
-  background: #fff;
   padding: 15px;
   width: 100%;
-  text-align: left;
   max-width: 700px;
-}
-
-.modal h1 {
-  margin-top: 0;
-}
-
-.modal p {
-  margin-bottom: 0;
+  text-align: center;
 }
