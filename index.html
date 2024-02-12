@@ -13,16 +13,65 @@
     <link rel="stylesheet" type="text/css" href="css/styles.css" />
   </head>
   <body>
-    <div id="modal-container" class="list-group"></div>
-    <ul class="pokemon-list">
-      <!--the pokemon buttons come from here-->
-    </ul>
-    <script src="js/promise-polyfill.js"></script>
-    <script src="js/fetch-polyfill.js"></script>
-    <script src="js/scripts.js"></script>
+    <header class="page-header">
+      <img
+        src="img/pokemon-app.jpg"
+        class="img-fluid"
+        alt="logo for pokemon-app"
+      />
+    </header>
+    <div class="container">
+      <div
+        id="pokemon-container"
+        class="row mt-5 mb-5 justify-content-center p-3"
+        style="padding-bottom: 100px; display: block"
+      >
+        <div class="user-cards" data-user-cards-container=""></div>
+        <ul
+          class="pokemon-list row list-unstyled p-4"
+          style="padding-bottom: 30px"
+        ></ul>
+      </div>
+    </div>
+
+    <!-- Modal -->
+    <div
+      class="modal fade show"
+      id="exampleModal"
+      tabindex="-1"
+      role="dialog"
+      aria-labelledby="exampleModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title w-100" id="exampleModalLabel"></h1>
+            <button
+              type="button"
+              class="close"
+              data-dismiss="modal"
+              aria-label="Close"
+            >
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body"></div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-dismiss="modal"
+            >
+              Close
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
     <script
-      src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-      integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+      src="https://code.jquery.com/jquery-3.3.1.min.js"
+      integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
       crossorigin="anonymous"
     ></script>
     <script
@@ -35,5 +84,8 @@
       integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
       crossorigin="anonymous"
     ></script>
+    <script src="js/promise-polyfill.js"></script>
+    <script src="js/fetch-polyfill.js"></script>
+    <script src="js/script.js"></script>
   </body>
 </html>
