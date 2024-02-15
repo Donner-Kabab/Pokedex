@@ -91,9 +91,10 @@ let pokemonRepository = (function () {
         const frontImage = json.sprites.front_default;
 
         let modalBody = document.querySelector(".modal-body");
-        //clear existing modal content
-        modalBody.innerHTML = "";
         let modalTitle = document.querySelector(".modal-title");
+
+        modalTitle.innerText = "";
+        modalBody.innerHTML = "";
         modalTitle.innerText = pokemon.name;
 
         //add new modal content
@@ -111,7 +112,6 @@ let pokemonRepository = (function () {
         //modalBody.appendChild(closeButtonElement);
         modalBody.appendChild(titleElement);
         modalBody.appendChild(contentElement);
-        //modalBody.appendChild(modal);
       });
   }
 
