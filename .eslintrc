@@ -1,0 +1,14 @@
+{
+  //writing ES6 code
+  "env": {
+    "es6": true,
+    //targeted for browser
+    "browser": true
+  },
+  //we want to use the default recommended rules
+  "extends": ["eslint:recommended"],
+  "rules": {
+    //allow double quotes and throw error if singles are found
+    "quotes": ["error", "double"]
+  }
+}
